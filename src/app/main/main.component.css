@@ -1,3 +1,22 @@
 mgl-map{
-    height: 60vh;
+    height: 50vh;
 }
+
+.marker{
+    color: #ee3840;
+}
+
+#destination{
+    border: none;
+    border-bottom: 1px solid #797979;
+
+}
+
+.buttons{
+    text-align: center;
+    /* position:absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+}
+

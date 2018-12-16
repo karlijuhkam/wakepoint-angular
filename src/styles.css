@@ -2,3 +2,27 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~mapbox-gl/dist/mapbox-gl.css";
 @import "~@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css";
+
+.wakepoint{
+    max-height: 100vh;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.btn-wake{
+    padding: 10px 30px;
+    border-radius: 30px;
+    border: none;
+    min-width: 60px;
+    margin: 10px;
+}
+
+.btn-wake-red{
+    background: #ff4757;
+    color: white;
+}
+
+.btn-wake-green{
+    background: #2ed573;
+    color: white;
+}
