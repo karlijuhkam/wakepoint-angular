@@ -1,9 +1,8 @@
 import { Component, OnInit, Input, NgZone} from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { Marker } from 'mapbox-gl';
-import { environment } from '../../environments/environment';
 
-(mapboxgl as typeof mapboxgl).accessToken = environment.mapbox.accessToken;
+// (mapboxgl as typeof mapboxgl).accessToken = environment.mapbox.accessToken;
 
 @Component({
   selector: 'app-map2',
