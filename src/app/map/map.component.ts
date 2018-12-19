@@ -5,6 +5,12 @@ import distance from '@turf/distance';
 @Component({
   selector: 'app-map',
   template: `
+  <div class="mx-3">
+  <h6>Vali äratuse asukoht kaardilt -</h6>
+  <p class="tiny" (change)="measure()"> {{vahemaa}}</p>
+  <p class="tiny"> CURRENT LOCATION: LAT- <b>{{current_lat}}</b> LNG- <b>{{current_lng}}</b></p>
+</div>
+  
   <mgl-map
   [center]="[lng,lat]"
   [style]="style"
@@ -34,8 +40,9 @@ import distance from '@turf/distance';
 <div class="mx-3 mt-1">
   <div class="buttons mt-3">
     <button class="btn-wake btn-wake-red" (click)="clear()">Tühista</button>
-    <button class="btn-wake btn-wake-green">Ärata</button>
-    <p class="small">CURRENT LOCATION: LAT- <b>{{current_lat}}</b> LNG- <b>{{current_lng}}</b></p>
+    <button class="btn-wake btn-wake-green" (click)="measure()">Ärata</button>
+   
+    
   </div>
 </div>  
 `,
@@ -53,6 +60,8 @@ export class MapComponent implements OnInit {
   destinationLNG: number;
   destinationLAT: number;
   map: mapboxgl.Map;
+  @Input() vahemaa: any;
+  active:boolean = false;
   constructor() { }
 
   ngOnInit() {
@@ -70,7 +79,8 @@ export class MapComponent implements OnInit {
       navigator.geolocation.watchPosition(position => {
              this.current_lat = position.coords.latitude;
              this.current_lng = position.coords.longitude;
-             console.log('CURRENT position is: LNG:'+this.current_lng+' LAT: '+this.current_lat)
+             console.log('CURRENT position is: LNG:'+this.current_lng+' LAT: '+this.current_lat);
+             this.measure();
            });
       
 
@@ -95,9 +105,20 @@ export class MapComponent implements OnInit {
       this.destination = marker.getLngLat().toArray();
       this.destinationLNG = this.destination[0];
       this.destinationLAT = this.destination[1];
+      this.measure();
+    }
+
+    measure(){
+      this.active=true;
+        this.vahemaa = distance([this.current_lat,this.current_lng],[this.destinationLAT,this.destinationLNG],{'units':'meters'});
+      if(this.vahemaa<10){
+        window.alert('ÄRATUS!')
+      }
+        
     }
 
     clear(){
+      this.active=false;
       this.destination = null;
     }
 }

@@ -1,5 +1,5 @@
 mgl-map{
-    height: 60vh;
+    height: 50vh;
 }
 
 .buttons{
@@ -10,3 +10,6 @@ mgl-map{
     transform: translate(-50%, -50%); */
 }
 
+.tiny{
+    font-size: 10px;
+}
