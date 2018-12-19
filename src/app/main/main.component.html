@@ -15,22 +15,16 @@
   <h6>Vali äratuse asukoht kaardilt -</h6>
 </div>
 
-<mgl-map
-    [style]="'mapbox://styles/karlij301/cjp2dbhqx20m12rkd6l95begz'"
-    [zoom]="[15]"
-    [center]="[lng, lat]"
-  >
-  <mgl-marker
-     [lngLat]="[lng, lat]"
-   >
-   <fa class="pull-right fa-3x marker" name="map-marker"></fa>
-   </mgl-marker>
-  </mgl-map>
+<app-map2></app-map2>
 <div class="mx-3 mt-1">
-  <h6>Sinu äratuse sihtpunkt on -</h6>
-  <input type="search" name="destination" id="destination" value="Vorbuse küla, Tartumaa">
+  
+  <!-- <input type="search" name="destination" id="destination" value="Vorbuse küla, Tartumaa"> -->
   <div class="buttons mt-3">
     <button class="btn-wake btn-wake-red">Tühista</button>
     <button class="btn-wake btn-wake-green">Ärata</button>
+    <p>{{teade}}</p>
   </div>
+  
+  
+  
 </div>

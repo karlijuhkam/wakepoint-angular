@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MapComponent } from '../map/map.component';
+
 
 
 @Component({
@@ -7,29 +9,27 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+
+  
   constructor() { }
-  style = 'mapbox://styles/mapbox/streets-v8';
-  zoom: number = 16;
-  @Input() lat= 58.889305;
-  @Input() lng= 25.520473;
+  
 
   ngOnInit() {
-    this.initializeMap()
+    // this.getLocation();
   }
 
-  private initializeMap() {
-    /// locate the user
-    if (navigator.geolocation) {
-       navigator.geolocation.watchPosition(position => {
-        this.lat = position.coords.latitude;
-        this.lng = position.coords.longitude;
-        console.log('position is: LNG:'+this.lng+' LAT: '+this.lat)
-      });
-    } else {
-      console.log('Geolocation is not working');
-      window.alert("Geolocation is not supported by this browser or is not allowed.");
-}
+//   public getLocation() {
+//     /// locate the user
+//     if (navigator.geolocation) {
+//        navigator.geolocation.getCurrentPosition(position => {
+//         this.lat = position.coords.latitude;
+//         this.lng = position.coords.longitude;
+//         console.log('position is: LNG:'+this.lng+' LAT: '+this.lat)
+//       });
 
-
-  }
+//     } else {
+//       console.log('Geolocation is not working');
+//       window.alert("Geolocation is not supported by this browser or is not allowed.");
+//       }
+//   }
 }

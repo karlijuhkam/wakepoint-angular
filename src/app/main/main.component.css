@@ -1,5 +1,9 @@
+header{
+    height: 10vh;
+}
+
 mgl-map{
-    height: 50vh;
+    height: 60vh;
 }
 
 .marker{
