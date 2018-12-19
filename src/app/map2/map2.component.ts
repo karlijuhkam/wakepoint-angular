@@ -78,9 +78,10 @@ setMarker(){
     var destination = point.getLngLat().toArray();
     this.destination = destination;
     console.log('punkti LNG: '+this.destination[0]+' LAT:'+this.destination[1]);
+    return this.destination;
   }
-
-  point.on('dragend', onDragEnd);
+  
+ point.on('dragend', onDragEnd);
 }
 
 

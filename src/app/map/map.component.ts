@@ -1,11 +1,12 @@
 import { Component, OnInit, Input, NgZone } from '@angular/core';
-import { Marker } from 'mapbox-gl';
+import * as mapboxgl from 'mapbox-gl';
 import { LngLatBounds } from 'mapbox-gl';
 
 @Component({
   selector: 'app-map',
   template: `
   <mgl-map
+  [center]="[lng,lat]"
   [style]="style"
   [zoom]="[zoom]"
 
@@ -29,16 +30,20 @@ import { LngLatBounds } from 'mapbox-gl';
     (dragEnd)="onDragEnd($event)"
   ></mgl-marker>
 </mgl-map>
+<h6 class="mx-3">Sinu äratuse sihtpunkt on - <span *ngIf="destination">LAT:{{destinationLAT}} LNG:{{destinationLNG}}</span></h6>
   `,
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
   style = 'mapbox://styles/karlij301/cjp2dbhqx20m12rkd6l95begz';
   zoom: number = 16;
-  @Input() lat:any = 54.3333;
-  @Input() lng:any = 54.3333;
+  lat:any = 54.3333;
+  lng:any = 54.3333;
   teade: any;
   destination: any;
+  destinationLNG: number;
+  destinationLAT: number;
+  map: mapboxgl.Map;
   constructor() { }
 
   ngOnInit() {
@@ -60,9 +65,11 @@ export class MapComponent implements OnInit {
       }
   }
  
-    onDragEnd(marker: Marker) {
+    onDragEnd(marker: mapboxgl.Marker) {
       NgZone.assertInAngularZone();
       this.destination = marker.getLngLat().toArray();
+      this.destinationLNG = this.destination[0];
+      this.destinationLAT = this.destination[1];
 
 
       
