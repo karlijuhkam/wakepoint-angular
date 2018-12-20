@@ -89,7 +89,6 @@ export class MapComponent implements OnInit {
              this.current_lng = position.coords.longitude;
              console.log('CURRENT position is: LNG:'+this.current_lng+' LAT: '+this.current_lat);
              this.measure();
-             this.alarm();
            });
       
 
@@ -98,15 +97,6 @@ export class MapComponent implements OnInit {
       window.alert("Geolocation is not supported by this browser or is not allowed.");
       }
   }
-
-  // public watchLocation(){
-  //     navigator.geolocation.watchPosition(position => {
-  //      this.current_lat = position.coords.latitude;
-  //      this.current_lng = position.coords.longitude;
-  //      console.log('CURRENT position is: LNG:'+this.current_lng+' LAT: '+this.current_lat)
-  //    });
-
-  //  }
 
  
     onDragEnd(marker: mapboxgl.Marker) {
@@ -125,19 +115,9 @@ export class MapComponent implements OnInit {
           this.audio.src = "../../../assets/alarm.mp3";
           this.audio.load();
           this.audio.play();
-          // var teade = window.confirm('ÄRATUS!')
-          // if(){
-          //   this.clear()
-          //   audio.pause();
-          //   audio.currentTime = 0;
-          // }
         }
       }
 
-    alarm(){
-      
-        
-    }
     
 
     clear(){
