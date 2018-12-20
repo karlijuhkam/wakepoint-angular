@@ -6,7 +6,7 @@ import distance from '@turf/distance';
   selector: 'app-map',
   template: `
   <div class="mx-3">
-  <h6>Vali äratuse asukoht kaardilt -</h6>
+  <h6>Lohista sinist punkti äratuskoha valimiseks -</h6>
   <p class="tiny" (change)="measure()"> {{vahemaa}}</p>
   <p class="tiny"> CURRENT LOCATION: LAT- <b>{{current_lat}}</b> LNG- <b>{{current_lng}}</b></p>
 </div>
@@ -41,9 +41,15 @@ import distance from '@turf/distance';
   <div class="buttons mt-3">
     <button class="btn-wake btn-wake-red" (click)="clear()">Tühista</button>
     <button class="btn-wake btn-wake-green" (click)="measure()">Ärata</button>
-   
-    
   </div>
+</div>
+<div class="teade" *ngIf="active">
+  <div class="mx-3 mt-1">
+    <div class="buttons mt-3">
+      <button class="btn-wake btn-wake-red big" (click)="clear()">ÄRATUS</button>
+    </div>
+  </div>
+
 </div>  
 `,
   styleUrls: ['./map.component.css']
@@ -61,11 +67,13 @@ export class MapComponent implements OnInit {
   destinationLAT: number;
   map: mapboxgl.Map;
   @Input() vahemaa: any;
-  active:boolean = false;
+  active:boolean;
+  audio:any = new Audio();
   constructor() { }
 
   ngOnInit() {
     this.getLocation();
+    
     // this.watchLocation();
 
   }
@@ -81,6 +89,7 @@ export class MapComponent implements OnInit {
              this.current_lng = position.coords.longitude;
              console.log('CURRENT position is: LNG:'+this.current_lng+' LAT: '+this.current_lat);
              this.measure();
+             this.alarm();
            });
       
 
@@ -109,16 +118,31 @@ export class MapComponent implements OnInit {
     }
 
     measure(){
-      this.active=true;
-        this.vahemaa = distance([this.current_lat,this.current_lng],[this.destinationLAT,this.destinationLNG],{'units':'meters'});
-      if(this.vahemaa<10){
-        window.alert('ÄRATUS!')
+      
+        this.vahemaa = distance([this.current_lng,this.current_lat],this.destination,{'units':'meters'});
+        if(this.vahemaa<10){
+          this.active=true;
+          this.audio.src = "../../../assets/alarm.mp3";
+          this.audio.load();
+          this.audio.play();
+          // var teade = window.confirm('ÄRATUS!')
+          // if(){
+          //   this.clear()
+          //   audio.pause();
+          //   audio.currentTime = 0;
+          // }
+        }
       }
+
+    alarm(){
+      
         
     }
+    
 
     clear(){
       this.active=false;
       this.destination = null;
+      this.audio.pause();
     }
 }

@@ -27,3 +27,8 @@
     background: #2ed573;
     color: white;
 }
+
+.big{
+    padding: 5px 25px;
+    font-size: 45px;
+}
