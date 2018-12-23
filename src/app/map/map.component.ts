@@ -15,11 +15,6 @@ import distance from '@turf/distance';
   [center]="[lng,lat]"
   [style]="style"
   [zoom]="[zoom]"
-
-  [fitBounds]="bounds"
-  [fitBoundsOptions]="{
-    padding: 20
-  }"
 >
  
  <mgl-control 
