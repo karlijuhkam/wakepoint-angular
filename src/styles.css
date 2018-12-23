@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
-@import "~mapbox-gl/dist/mapbox-gl.css";
-@import "~@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css";
+/* @import "~mapbox-gl/dist/mapbox-gl.css";
+@import "~@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css";  */
+@import url('https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css');
 
 .wakepoint{
     max-height: 100vh;
@@ -25,4 +26,9 @@
 .btn-wake-green{
     background: #2ed573;
     color: white;
+}
+
+.big{
+    padding: 5px 25px;
+    font-size: 45px;
 }

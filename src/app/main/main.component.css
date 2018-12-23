@@ -1,5 +1,9 @@
+header{
+    height: 10vh;
+}
+
 mgl-map{
-    height: 50vh;
+    height: 60vh;
 }
 
 .marker{
@@ -10,13 +14,5 @@ mgl-map{
     border: none;
     border-bottom: 1px solid #797979;
 
-}
-
-.buttons{
-    text-align: center;
-    /* position:absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, -50%); */
 }
 

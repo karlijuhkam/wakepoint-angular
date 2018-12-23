@@ -4,11 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
+import { FormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { SettingsComponent } from './settings/settings.component';
+import { MapComponent } from './map/map.component';
+import { Map2Component } from './map2/map2.component';
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
   { path: 'settings', component: SettingsComponent },
@@ -20,11 +23,14 @@ const appRoutes: Routes = [
     AppComponent,
     MainComponent,
     SettingsComponent,
+    MapComponent,
+    Map2Component,
   ],
   imports: [
     BrowserModule,
     NgbModule,
     AngularFontAwesomeModule,
+    FormsModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
